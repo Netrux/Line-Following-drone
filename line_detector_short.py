@@ -69,6 +69,16 @@ def main_func():
 				# (0,0,255) denotes the colour of the line to be 
 				#drawn. In this case, it is red. 
 				cv2.line(frame,(x1,y1), (x2,y2), (0,0,255),5)
+				if(theta < (85*3.14)/180):
+					print("yaw right")
+				elif(theta > (95*3.14)/180):
+					print("yaw left")
+				(h, w) = frame.shape[:2] #w:image-width and h:image-height
+				cv2.circle(frame, (w/2, h/2), 7, (0, 0, 255), -1)
+			 	x = (w/2)/np.sin(theta)
+			 	y = x*np.cos(theta) + r/np.sin(theta)
+				cv2.circle(frame, (w/2, int(y)), 7, (255, 0, 0), -1)
+			# Display the resulting frame
 
 			# Display the resulting frame
 			cv2.imshow('Frame',frame)
